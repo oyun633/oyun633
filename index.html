@@ -3,334 +3,307 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zenith Network | Yönetim Paneli</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <title>Zenith Network | Future of Gaming</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Exo+2:wght@300;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        /* QUELLIX ENGINE - CUSTOM CSS */
         :root {
-            --p-color: #00ffcc; /* Turkuaz */
-            --s-color: #0088ff;
-            --bg: #0f0f13;
-            --card-bg: #1a1a24;
-            --text: #ffffff;
-            --text-dim: #a0a0b0;
-            --danger: #ff4757;
-            --success: #2ed573;
+            --accent: #00f2ff;
+            --accent-glow: rgba(0, 242, 255, 0.5);
+            --bg-deep: #050508;
+            --bg-card: #0d0e12;
+            --text-main: #e0e0e0;
+            --grad: linear-gradient(135deg, #00f2ff 0%, #0062ff 100%);
         }
 
-        /* Gece - Gündüz Modu Geçişi */
         [data-theme="light"] {
-            --bg: #f0f2f5;
-            --card-bg: #ffffff;
-            --text: #1a1a24;
-            --text-dim: #505060;
-            --p-color: #00b894;
+            --bg-deep: #eef2f7;
+            --bg-card: #ffffff;
+            --text-main: #1a1a1a;
+            --accent: #0072ff;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; transition: all 0.3s ease; }
-        body { background-color: var(--bg); color: var(--text); overflow-x: hidden; }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Exo 2', sans-serif; }
+        body { background-color: var(--bg-deep); color: var(--text-main); transition: 0.5s; overflow-x: hidden; }
 
-        /* Arkaplan Efekti */
-        .bg-glow { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: radial-gradient(circle at 50% 50%, rgba(0, 255, 204, 0.05) 0%, transparent 70%); z-index: -1; }
+        /* Arkaplan Efekti - Parçacık Animasyonu Simülasyonu */
+        .bg-vibe { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; 
+            background: radial-gradient(circle at 20% 30%, rgba(0, 242, 255, 0.03) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 70%, rgba(0, 98, 255, 0.03) 0%, transparent 40%);
+        }
 
-        /* Navbar */
-        nav { background: rgba(26, 26, 36, 0.8); backdrop-filter: blur(10px); padding: 15px 10%; display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid var(--p-color); position: sticky; top: 0; z-index: 1000; }
-        .logo { font-weight: 700; font-size: 24px; color: var(--p-color); text-transform: uppercase; letter-spacing: 2px; }
-        .nav-links { display: flex; gap: 25px; list-style: none; }
-        .nav-links a { color: var(--text); text-decoration: none; font-weight: 500; cursor: pointer; }
-        .nav-links a:hover { color: var(--p-color); }
+        /* Navbar - Cyber Style */
+        nav { padding: 20px 8%; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); background: rgba(0,0,0,0.2); backdrop-filter: blur(15px); sticky; top: 0; z-index: 100; }
+        .brand { font-family: 'Orbitron', sans-serif; font-size: 26px; font-weight: 700; background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .nav-items { display: flex; gap: 30px; }
+        .nav-items a { text-decoration: none; color: var(--text-main); font-weight: 600; font-size: 14px; text-transform: uppercase; letter-spacing: 1px; cursor: pointer; transition: 0.3s; }
+        .nav-items a:hover { color: var(--accent); text-shadow: 0 0 10px var(--accent-glow); }
 
-        /* Main Container */
-        .container { max-width: 1300px; margin: 40px auto; display: grid; grid-template-columns: 300px 1fr 300px; gap: 25px; padding: 0 20px; }
+        /* Container */
+        .wrapper { max-width: 1400px; margin: 40px auto; display: grid; grid-template-columns: 320px 1fr 320px; gap: 30px; padding: 0 20px; }
 
-        /* Kart Yapısı (Resimlerdeki Stil) */
-        .card { background: var(--card-bg); border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.3); margin-bottom: 25px; border: 1px solid rgba(255,255,255,0.05); }
-        .card-header { background: #252533; padding: 15px; text-align: center; position: relative; }
-        .card-header h3 { font-size: 16px; font-weight: 600; position: relative; z-index: 2; }
+        /* Kartlar */
+        .q-card { background: var(--bg-card); border-radius: 20px; border: 1px solid rgba(255,255,255,0.03); position: relative; overflow: hidden; box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+        .q-header { padding: 20px; background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 10px; }
+        .q-header i { color: var(--accent); }
+        .q-header h3 { font-size: 14px; font-family: 'Orbitron'; letter-spacing: 1px; }
+
+        /* Kullanıcı Alanı */
+        .user-profile { padding: 25px; text-align: center; }
+        .avatar-frame { position: relative; width: 100px; height: 100px; margin: 0 auto 20px; }
+        .avatar-frame img { width: 100%; height: 100%; border-radius: 15px; border: 2px solid var(--accent); padding: 5px; }
+        .online-dot { position: absolute; bottom: -5px; right: -5px; width: 20px; height: 20px; background: #2ecc71; border: 4px solid var(--bg-card); border-radius: 50%; }
+
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px; }
+        .stat-box { background: rgba(0,0,0,0.2); padding: 10px; border-radius: 10px; font-size: 12px; }
+        .stat-box span { display: block; color: var(--accent); font-weight: 700; font-size: 16px; }
+
+        /* Market & Blog */
+        .grid-3 { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 20px; padding: 25px; }
+        .m-item { background: rgba(255,255,255,0.02); border-radius: 15px; padding: 20px; text-align: center; transition: 0.4s; border: 1px solid transparent; }
+        .m-item:hover { transform: translateY(-10px); border-color: var(--accent); background: rgba(0, 242, 255, 0.02); }
+        .m-item img { width: 90px; height: 90px; margin-bottom: 15px; filter: drop-shadow(0 0 15px var(--accent-glow)); }
+
+        /* Admin UI */
+        .admin-panel { padding: 25px; }
+        .q-input { width: 100%; padding: 12px 15px; margin-bottom: 15px; background: rgba(0,0,0,0.3); border: 1px solid #222; border-radius: 10px; color: #fff; outline: none; transition: 0.3s; }
+        .q-input:focus { border-color: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
         
-        /* Dalgalı Alt Başlık (SVG) */
-        .wave { position: absolute; bottom: 0; left: 0; width: 100%; line-height: 0; }
-        .wave svg { fill: var(--card-bg); height: 15px; width: 100%; }
+        .btn-q { width: 100%; padding: 15px; border: none; border-radius: 10px; background: var(--grad); color: #000; font-weight: 700; font-family: 'Orbitron'; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        .btn-q:hover { transform: scale(1.02); filter: brightness(1.2); }
 
-        /* Kullanıcı Paneli Detayları */
-        .user-info { padding: 20px; text-align: left; }
-        .user-info p { margin-bottom: 10px; font-size: 14px; color: var(--text-dim); }
-        .user-info b { color: var(--p-color); }
-        .btn-group { display: flex; flex-direction: column; gap: 10px; padding: 0 20px 20px; }
-        .btn { padding: 12px; border: none; border-radius: 8px; cursor: pointer; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 8px; }
-        .btn-p { background: var(--p-color); color: #000; }
-        .btn-s { background: #2d2d3d; color: #fff; }
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,255,204,0.3); }
+        /* Tablo Stili */
+        .q-table { width: 100%; border-collapse: collapse; }
+        .q-table td { padding: 15px 20px; font-size: 13px; border-bottom: 1px solid rgba(255,255,255,0.02); }
+        .q-table tr:hover { background: rgba(255,255,255,0.01); }
 
-        /* Market Kartları */
-        .market-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
-        .product { padding: 20px; text-align: center; background: rgba(255,255,255,0.02); border-radius: 12px; border: 1px solid rgba(255,255,255,0.05); }
-        .product img { width: 80px; height: 80px; margin-bottom: 15px; filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5)); }
-
-        /* Widget Tabloları */
-        .w-table { width: 100%; border-collapse: collapse; }
-        .w-table tr { border-bottom: 1px solid rgba(255,255,255,0.05); }
-        .w-table td { padding: 12px 15px; font-size: 13px; }
-        .mc-skin { width: 28px; height: 28px; border-radius: 4px; margin-right: 10px; vertical-align: middle; }
-
-        /* Admin Paneli Özel */
-        .admin-form { padding: 20px; }
-        input, select, textarea { width: 100%; padding: 12px; margin-bottom: 15px; background: #12121a; border: 1px solid #333; color: #fff; border-radius: 8px; }
-        
-        /* Footer */
-        footer { margin-top: 50px; background: #0a0a0f; padding: 50px 10%; border-top: 2px solid #1a1a24; }
-        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 50px; }
-
-        .hidden { display: none !important; }
+        .hidden { display: none; }
+        .footer { text-align: center; padding: 50px; color: var(--text-dim); font-size: 12px; opacity: 0.5; }
     </style>
 </head>
 <body>
 
-    <div class="bg-glow"></div>
+<div class="bg-vibe"></div>
 
-    <nav>
-        <div class="logo">ZENITH <span style="color:white">NETWORK</span></div>
-        <ul class="nav-links">
-            <li><a onclick="show('home')">Anasayfa</a></li>
-            <li><a onclick="show('market')">Market</a></li>
-            <li><a onclick="show('credit')">Bakiye Yükle</a></li>
-            <li id="admin-link" class="hidden"><a onclick="show('admin')" style="color:var(--danger)">Admin</a></li>
-        </ul>
-        <button class="btn btn-p" style="padding: 8px 15px;" onclick="toggleTheme()"><i class="fa-solid fa-moon"></i></button>
-    </nav>
-
-    <div class="container">
-        <div class="side-left">
-            <div class="card">
-                <div class="card-header">
-                    <h3>KULLANICI PANELİ</h3>
-                    <div class="wave"><svg viewBox="0 0 500 20" preserveAspectRatio="none"><path d="M0,10 C150,20 350,0 500,10 L500,20 L0,20 Z"></path></svg></div>
-                </div>
-                <div id="auth-box" class="user-info">
-                    <p>Sunucuya hoş geldin! İşlem yapmak için giriş yapmalısın.</p>
-                    <button class="btn btn-p" onclick="show('login')">Giriş Yap / Kayıt Ol</button>
-                </div>
-                <div id="user-box" class="hidden">
-                    <div class="user-info">
-                        <p>Kullanıcı: <b id="u-name">...</b></p>
-                        <p>Bakiye: <b id="u-bal">0 ₺</b></p>
-                        <p>Son Giriş: <span id="u-last" style="font-size:11px; color:gray">...</span></p>
-                    </div>
-                    <div class="btn-group">
-                        <button class="btn btn-s"><i class="fa-solid fa-box-open"></i> Depo</button>
-                        <button class="btn btn-s"><i class="fa-solid fa-user-gear"></i> Ayarlar</button>
-                        <button class="btn btn-p" onclick="show('credit')"><i class="fa-solid fa-wallet"></i> Kredi Yükle</button>
-                        <button class="btn btn-s" style="background:#4b1c1c" onclick="logout()">Çıkış Yap</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3>SUNUCU DURUMU</h3>
-                    <div class="wave"><svg viewBox="0 0 500 20" preserveAspectRatio="none"><path d="M0,10 C150,20 350,0 500,10 L500,20 L0,20 Z"></path></svg></div>
-                </div>
-                <div class="user-info" style="text-align:center">
-                    <p id="srv-status">Yükleniyor...</p>
-                    <h2 id="srv-players" style="color:var(--p-color)">0 / 0</h2>
-                    <p style="font-size:11px">zenithback.falixsrv.me</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="main-content">
-            <div id="page-home">
-                <div class="card">
-                    <div class="card-header"><h3>SON DUYURULAR</h3></div>
-                    <div id="blog-posts" style="padding:20px">Henüz bir duyuru yayınlanmadı.</div>
-                </div>
-            </div>
-
-            <div id="page-market" class="hidden">
-                <div class="card">
-                    <div class="card-header"><h3>MAĞAZA</h3></div>
-                    <div class="market-grid" id="market-list" style="padding:20px"></div>
-                </div>
-            </div>
-
-            <div id="page-credit" class="hidden">
-                <div class="card">
-                    <div class="card-header"><h3>BAKİYE YÜKLE</h3></div>
-                    <div style="padding:30px; text-align:center">
-                        <p>Ödeme yapmak için platform seçin:</p><br>
-                        <button class="btn btn-p" style="margin-bottom:10px" onclick="window.open('https://shopier.com/SAYFAN')">Shopier ile Öde</button>
-                        <button class="btn btn-s" onclick="window.open('https://paypal.me/SAYFAN')">PayPal ile Öde</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="page-login" class="hidden">
-                <div class="card">
-                    <div class="card-header"><h3>HESAP MERKEZİ</h3></div>
-                    <div class="admin-form">
-                        <input type="text" id="log-u" placeholder="Kullanıcı Adı">
-                        <input type="password" id="log-p" placeholder="Şifre (Default: 123123)">
-                        <button class="btn btn-p" onclick="login()">Giriş Yap</button>
-                        <button class="btn btn-s" style="margin-top:10px" onclick="alert('Kayıt Sistemi Aktif!')">Kayıt Ol</button>
-                    </div>
-                </div>
-            </div>
-
-            <div id="page-admin" class="hidden">
-                <div class="card">
-                    <div class="card-header" style="background:var(--danger)"><h3>YÖNETİCİ PANELİ</h3></div>
-                    <div class="admin-form">
-                        <h4>Market Eşyası Ekle</h4>
-                        <input type="text" id="adm-n" placeholder="Eşya Adı">
-                        <input type="number" id="adm-p" placeholder="Fiyat (₺)">
-                        <input type="text" id="adm-i" placeholder="Logo URL">
-                        <button class="btn btn-p" onclick="adminAdd()">Ekle</button>
-                        <hr style="margin:20px 0; border:1px solid #333">
-                        <h4>WebSender & Kupon</h4>
-                        <input type="text" id="ws-ip" placeholder="WebSender IP">
-                        <input type="password" id="ws-pass" placeholder="WebSender Şifre">
-                        <button class="btn btn-s" onclick="alert('Ayarlar Kaydedildi!')">Bağlantıyı Kaydet</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="side-right">
-            <div class="card">
-                <div class="card-header">
-                    <h3>SON KREDİ YÜKLEYENLER</h3>
-                    <div class="wave"><svg viewBox="0 0 500 20" preserveAspectRatio="none"><path d="M0,10 C150,20 350,0 500,10 L500,20 L0,20 Z"></path></svg></div>
-                </div>
-                <table class="w-table" id="last-credits"></table>
-            </div>
-
-            <div class="card">
-                <div class="card-header">
-                    <h3>YENİ KATILANLAR</h3>
-                    <div class="wave"><svg viewBox="0 0 500 20" preserveAspectRatio="none"><path d="M0,10 C150,20 350,0 500,10 L500,20 L0,20 Z"></path></svg></div>
-                </div>
-                <table class="w-table" id="new-members"></table>
-            </div>
-        </div>
+<nav>
+    <div class="brand">ZENITH_OS</div>
+    <div class="nav-items">
+        <a onclick="route('home')">Dashboard</a>
+        <a onclick="route('shop')">Terminal</a>
+        <a onclick="route('top')">Leaders</a>
+        <a onclick="route('admin')" id="adm-nav" class="hidden">Root</a>
     </div>
+    <div class="user-actions">
+        <button onclick="toggleTheme()" style="background:none; border:none; color:var(--accent); cursor:pointer;"><i class="fas fa-adjust"></i></button>
+    </div>
+</nav>
 
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <h2 style="color:var(--p-color)">ZENITH NETWORK</h2>
-                <p style="color:var(--text-dim); margin-top:15px">Türkiye'nin en gelişmiş Minecraft topluluk sunucusu. Kalite ve güvenin adresi.</p>
+<div class="wrapper">
+    <aside>
+        <div class="q-card">
+            <div class="q-header"><i class="fas fa-user-circle"></i> <h3>USER_SESSION</h3></div>
+            <div id="no-auth" class="user-profile">
+                <p style="font-size: 13px; margin-bottom: 20px;">Sisteme erişmek için kimlik doğrulaması gerekiyor.</p>
+                <button class="btn-q" onclick="route('login')">GİRİŞ YAP</button>
             </div>
-            <div>
-                <h4>Hızlı Erişim</h4>
-                <ul style="list-style:none; margin-top:15px; line-height:2">
-                    <li><a href="#">Market</a></li>
-                    <li><a href="#">Kurallar</a></li>
-                    <li><a href="#">Destek</a></li>
-                </ul>
-            </div>
-            <div>
-                <h4>İletişim</h4>
-                <p style="margin-top:15px">Discord: zenith.discord</p>
-                <p>Mail: admin@zenith.com</p>
+            <div id="is-auth" class="user-profile hidden">
+                <div class="avatar-frame">
+                    <img id="my-head" src="https://minotar.net/avatar/MHF_Steve/100.png">
+                    <div class="online-dot"></div>
+                </div>
+                <h2 id="my-name">PLAYER</h2>
+                <p style="font-size: 11px; color: gray; margin-bottom: 20px;">RANK: <span style="color:var(--accent)">MEMBER</span></p>
+                
+                <div class="stat-grid">
+                    <div class="stat-box">BAKİYE <span id="my-bal">0 ₺</span></div>
+                    <div class="stat-box">KREDİ <span id="my-cred">0</span></div>
+                </div>
+                <button class="btn-q" style="margin-bottom: 10px;" onclick="route('payment')">BAKİYE YÜKLE</button>
+                <button class="btn-q" style="background: #1a1b20; color: #ff4757;" onclick="logout()">SİSTEMİ KAPAT</button>
             </div>
         </div>
-    </footer>
 
-    <script>
-        // --- VERİ SİSTEMİ ---
-        let data = JSON.parse(localStorage.getItem('zDB')) || {
-            users: { "admin": {pass: "123123", bal: 500, role: "admin", join: "13.03.2026"} },
-            activeUser: null,
-            market: [
-                {name: "VIP", price: 50, img: "https://minotar.net/cube/MHF_GoldBlock/100.png"},
-                {name: "MVP+", price: 150, img: "https://minotar.net/cube/MHF_DiamondBlock/100.png"}
-            ],
-            credits: [{u: "admin", m: "100 ₺"}, {u: "InfernoX", m: "250 ₺"}],
-            members: ["admin", "TR_olcaybtw", "DroppedByORG", "MEHMETY3232"]
-        };
-
-        const save = () => localStorage.setItem('zDB', JSON.stringify(data));
-
-        // --- SAYFA YÖNETİMİ ---
-        function show(p) {
-            ["home", "market", "credit", "login", "admin"].forEach(i => document.getElementById('page-'+i).classList.add('hidden'));
-            document.getElementById('page-'+p).classList.remove('hidden');
-        }
-
-        // --- AUTH ---
-        function login() {
-            let u = document.getElementById('log-u').value;
-            let p = document.getElementById('log-p').value;
-            if(data.users[u] && data.users[u].pass === p) {
-                data.activeUser = u;
-                save(); render(); show('home');
-            } else alert("Hatalı Giriş!");
-        }
-
-        function logout() { data.activeUser = null; save(); render(); show('home'); }
-
-        // --- ADMİN ---
-        function adminAdd() {
-            let n = document.getElementById('adm-n').value;
-            let p = document.getElementById('adm-p').value;
-            let i = document.getElementById('adm-i').value || "https://minotar.net/cube/MHF_Chest/100.png";
-            data.market.push({name: n, price: p, img: i});
-            save(); render(); alert("Eklendi!");
-        }
-
-        // --- TEMA ---
-        function toggleTheme() {
-            let t = document.body.getAttribute('data-theme');
-            document.body.setAttribute('data-theme', t === 'light' ? 'dark' : 'light');
-        }
-
-        // --- API & RENDER ---
-        async function updateServer() {
-            try {
-                const res = await fetch('https://api.mcsrvstat.us/3/zenithback.falixsrv.me');
-                const d = await res.json();
-                document.getElementById('srv-status').innerHTML = d.online ? '<b style="color:var(--success)">AKTİF</b>' : '<b style="color:var(--danger)">KAPALI</b>';
-                document.getElementById('srv-players').innerText = d.online ? `${d.players.online} / ${d.players.max}` : "0 / 0";
-            } catch(e) {}
-        }
-
-        function render() {
-            // Kullanıcı Paneli
-            if(data.activeUser) {
-                document.getElementById('auth-box').classList.add('hidden');
-                document.getElementById('user-box').classList.remove('hidden');
-                document.getElementById('u-name').innerText = data.activeUser;
-                document.getElementById('u-bal').innerText = data.users[data.activeUser].bal + " ₺";
-                document.getElementById('u-last').innerText = "Kayıt: " + data.users[data.activeUser].join;
-                if(data.users[data.activeUser].role === 'admin') document.getElementById('admin-link').classList.remove('hidden');
-            } else {
-                document.getElementById('auth-box').classList.remove('hidden');
-                document.getElementById('user-box').classList.add('hidden');
-                document.getElementById('admin-link').classList.add('hidden');
-            }
-
-            // Market
-            document.getElementById('market-list').innerHTML = data.market.map(i => `
-                <div class="product">
-                    <img src="${i.img}">
-                    <h4>${i.name}</h4>
-                    <p style="color:var(--p-color); font-weight:bold">${i.price} ₺</p>
-                    <button class="btn btn-p" style="width:100%; margin-top:10px; font-size:12px">Satın Al</button>
+        <div class="q-card" style="margin-top: 25px;">
+            <div class="q-header"><i class="fas fa-server"></i> <h3>CORE_STATUS</h3></div>
+            <div style="padding: 20px; text-align: center;">
+                <h4 style="font-family: 'Orbitron'; color: var(--accent);">ZENITH_BACKEND</h4>
+                <p style="font-size: 11px; margin: 10px 0;">IP: zenithback.falixsrv.me</p>
+                <div style="background: rgba(0,0,0,0.4); padding: 15px; border-radius: 10px;">
+                    <span id="p-count" style="font-size: 24px; font-weight: 700;">00</span> <span style="color: gray;">/ 100</span>
+                    <p style="font-size: 10px; color: #2ecc71; margin-top: 5px;">STABLE_CONNECTION</p>
                 </div>
-            `).join('');
+            </div>
+        </div>
+    </aside>
 
-            // Widgetlar
-            document.getElementById('last-credits').innerHTML = data.credits.slice(0,5).map(c => `
-                <tr><td><img src="https://minotar.net/avatar/${c.u}/28.png" class="mc-skin">${c.u}</td><td style="text-align:right"><b>${c.m}</b></td></tr>
-            `).join('');
+    <main>
+        <section id="p-home">
+            <div class="q-card">
+                <div class="q-header"><i class="fas fa-rss"></i> <h3>SYSTEM_LOGS</h3></div>
+                <div id="logs" style="padding: 25px;">
+                    <div style="border-left: 2px solid var(--accent); padding-left: 20px; margin-bottom: 30px;">
+                        <h4 style="color: var(--accent);">YENİ SEZON BAŞLADI!</h4>
+                        <p style="font-size: 13px; color: gray; margin-top: 5px;">Tüm sistemler güncellendi. Yeni market ürünleri ve WebSender 2.0 aktif edildi.</p>
+                        <small style="font-size: 10px; opacity: 0.5;">Tarih: 13.03.2026</small>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-            document.getElementById('new-members').innerHTML = data.members.slice(0,5).map(m => `
-                <tr><td><img src="https://minotar.net/avatar/${m}/28.png" class="mc-skin">${m}</td><td style="text-align:right; color:gray">Oyuncu</td></tr>
-            `).join('');
+        <section id="p-shop" class="hidden">
+            <div class="q-card">
+                <div class="q-header"><i class="fas fa-shopping-cart"></i> <h3>MARKET_TERMINAL</h3></div>
+                <div class="grid-3" id="m-list"></div>
+            </div>
+        </section>
+
+        <section id="p-login" class="hidden">
+            <div class="q-card" style="max-width: 450px; margin: 0 auto;">
+                <div class="q-header"><i class="fas fa-key"></i> <h3>ACCESS_PORTAL</h3></div>
+                <div style="padding: 30px;">
+                    <input type="text" id="in-u" class="q-input" placeholder="Kullanıcı Adı">
+                    <input type="password" id="in-p" class="q-input" placeholder="Şifre">
+                    <button class="btn-q" onclick="login()">SİSTEME GİRİŞ YAP</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="p-admin" class="hidden">
+            <div class="q-card">
+                <div class="q-header" style="background: rgba(255,0,0,0.05); border-bottom: 1px solid #ff4757;"><i class="fas fa-skull" style="color:#ff4757"></i> <h3>ROOT_OVERRIDE</h3></div>
+                <div class="admin-panel">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px;">
+                        <div>
+                            <h4 style="margin-bottom: 15px;">Ürün Ekle</h4>
+                            <input type="text" id="adm-n" class="q-input" placeholder="Ürün Adı">
+                            <input type="number" id="adm-p" class="q-input" placeholder="Fiyat">
+                            <input type="text" id="adm-i" class="q-input" placeholder="İkon (URL)">
+                            <button class="btn-q" onclick="admAdd()">EKLE</button>
+                        </div>
+                        <div>
+                            <h4 style="margin-bottom: 15px;">WebSender 3.0</h4>
+                            <input type="text" id="ws-ip" class="q-input" placeholder="Host IP">
+                            <input type="password" id="ws-pass" class="q-input" placeholder="Secret Key">
+                            <button class="btn-q" style="background: #1a1b20; color: var(--accent);" onclick="alert('Link Established.')">BAĞLAN</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <aside>
+        <div class="q-card">
+            <div class="q-header"><i class="fas fa-bolt"></i> <h3>RECENT_TRANSFERS</h3></div>
+            <table class="q-table" id="last-tx"></table>
+        </div>
+
+        <div class="q-card" style="margin-top: 25px;">
+            <div class="q-header"><i class="fas fa-trophy"></i> <h3>TOP_DONATORS</h3></div>
+            <table class="q-table" id="top-donors"></table>
+        </div>
+    </aside>
+</div>
+
+<div class="footer">
+    DESIGNED BY QUELLIX_ENGINE V4.0 // ZENITH_NETWORK &copy; 2026
+</div>
+
+<script>
+    // --- QUELLIX CORE DATA ---
+    let db = JSON.parse(localStorage.getItem('qDB')) || {
+        users: { "admin": {pw: "123123", bal: 750, role: "admin"} },
+        logged: null,
+        shop: [
+            {id: 1, name: "Zenith_Pass", price: 100, img: "https://minotar.net/cube/MHF_GoldBlock/100.png"},
+            {id: 2, name: "Root_Access", price: 250, img: "https://minotar.net/cube/MHF_TNT/100.png"}
+        ],
+        history: [
+            {u: "Quellix", a: "500 ₺"}, {u: "ZenithAdmin", a: "150 ₺"}, {u: "Player99", a: "20 ₺"}
+        ]
+    };
+
+    const save = () => localStorage.setItem('qDB', JSON.stringify(db));
+
+    // --- NAVIGATION ---
+    function route(p) {
+        ["home", "shop", "login", "admin"].forEach(id => {
+            const el = document.getElementById('p-' + id);
+            if(el) el.classList.add('hidden');
+        });
+        document.getElementById('p-' + p).classList.remove('hidden');
+        render();
+    }
+
+    // --- AUTH ---
+    function login() {
+        let u = document.getElementById('in-u').value;
+        let p = document.getElementById('in-p').value;
+        if(db.users[u] && db.users[u].pw === p) {
+            db.logged = u;
+            save(); route('home');
+        } else alert("INVALID_CREDENTIALS");
+    }
+
+    function logout() { db.logged = null; save(); route('home'); }
+
+    // --- ADMIN ---
+    function admAdd() {
+        let n = document.getElementById('adm-n').value;
+        let p = document.getElementById('adm-p').value;
+        let i = document.getElementById('adm-i').value || "https://minotar.net/cube/MHF_Chest/100.png";
+        db.shop.push({id: Date.now(), name: n, price: p, img: i});
+        save(); render(); alert("RESOURCE_UPLOADED");
+    }
+
+    // --- RENDER ENGINE ---
+    async function updateAPI() {
+        try {
+            const r = await fetch('https://api.mcsrvstat.us/3/zenithback.falixsrv.me');
+            const d = await r.json();
+            document.getElementById('p-count').innerText = d.online ? d.players.online : "00";
+        } catch(e) {}
+    }
+
+    function render() {
+        // User Panel
+        if(db.logged) {
+            document.getElementById('no-auth').classList.add('hidden');
+            document.getElementById('is-auth').classList.remove('hidden');
+            document.getElementById('my-name').innerText = db.logged;
+            document.getElementById('my-bal').innerText = db.users[db.logged].bal + " ₺";
+            document.getElementById('my-head').src = `https://minotar.net/avatar/${db.logged}/100.png`;
+            if(db.users[db.logged].role === 'admin') document.getElementById('adm-nav').classList.remove('hidden');
+        } else {
+            document.getElementById('no-auth').classList.remove('hidden');
+            document.getElementById('is-auth').classList.add('hidden');
+            document.getElementById('adm-nav').classList.add('hidden');
         }
 
-        window.onload = () => { render(); updateServer(); };
-    </script>
+        // Shop
+        document.getElementById('m-list').innerHTML = db.shop.map(x => `
+            <div class="m-item">
+                <img src="${x.img}">
+                <h4 style="font-family:'Orbitron'; font-size:12px;">${x.name}</h4>
+                <p style="color:var(--accent); margin:10px 0; font-weight:700;">${x.price} ₺</p>
+                <button class="btn-q" style="padding:8px; font-size:10px;" onclick="alert('PURCHASE_INITIATED')">SATIN AL</button>
+            </div>
+        `).join('');
+
+        // Sidebar Lists
+        document.getElementById('last-tx').innerHTML = db.history.map(h => `
+            <tr><td><img src="https://minotar.net/avatar/${h.u}/20.png" style="vertical-align:middle; margin-right:8px;"> ${h.u}</td><td style="color:var(--accent); text-align:right;">${h.a}</td></tr>
+        `).join('');
+    }
+
+    function toggleTheme() {
+        let t = document.body.getAttribute('data-theme');
+        document.body.setAttribute('data-theme', t === 'light' ? 'dark' : 'light');
+    }
+
+    window.onload = () => { render(); updateAPI(); setInterval(updateAPI, 30000); };
+</script>
 </body>
 </html>
